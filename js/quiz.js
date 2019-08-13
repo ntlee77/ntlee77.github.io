@@ -163,7 +163,7 @@ function getEndingSentence() {
                 else /* quizRadio[2] == "faminterviewconsulate" */ content = "Public charge doesn’t apply for Green Card applications based on U/T visa, VAWA, or Asylum or to people who have Green Cards when they adjust status under this category. You may use any benefits for which you qualify. However, public charge might be an issue for immigration. Get immigration advice.";
                 }
         }
-        else if (quizRadio[1] == "dacarenewal") content = "Public charge doesn’t apply for DACA renewal applications or to people who have DACA when they adjust status under this category. You may use any benefits for which you qualify.";
+        else if (quizRadio[1] == "dacarenewal") content = "Public charge <br>doesn’t apply for DACA renewal applications. You may use any benefits for which you qualify.";
         else if (quizRadio[1] == "uortvisa") content = "Public charge doesn’t apply for U or T Visa applications or to people who have U or T visas when they adjust status under this category. You may use any benefits for which you qualify.";
         else if (quizRadio[1] == "asylumorrefugeestatus") content = "Public charge doesn’t apply for Asylum or Refugee applications or to people who have Asylum or Refugee status when they adjust status under this category. You may use any benefits for which you qualify.";
         else if (quizRadio[1] == "tps") content = "Public charge doesn’t apply for TPS applications or to people who have TPS status when they adjust status under this category. You may use any benefits for which you qualify.";
