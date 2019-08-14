@@ -141,8 +141,8 @@ function getEndingSentence() {
             quizRadio.push(quizRadioRQ[i].id);
         }
     }
-    var txtDNA = "does not apply"
-    var txtMA = "may apply"
+    var txtDNA = "does not apply";
+    var txtMA = "may apply";
     
     if (quizRadio[0] == "gc_yes") {
         if (quizRadio[1] == "famgcapp_yes") {
