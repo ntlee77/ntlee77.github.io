@@ -141,8 +141,8 @@ function getEndingSentence() {
             quizRadio.push(quizRadioRQ[i].id);
         }
     }
-   /* var txtDNA = "does not apply";
-    var txtMA = "may apply"; */
+   var txtDNA = "does not apply";
+    var txtMA = "may apply"; 
     
     if (quizRadio[0] == "gc_yes") {
         if (quizRadio[1] == "famgcapp_yes") {
@@ -152,7 +152,7 @@ function getEndingSentence() {
     } else { //quizRadio[0] == "gc_no"
         if (quizRadio[1] == "famgcapp_no") {
             if (quizRadio[2] == "citizenship") {
-                content = "Public charge "  /* +txtDNA.bold()*/+ " to you unless you leave the U.S. for more than 6 months. Public charge does not affect applications for citizenship. Talk to an immigration attorney if you plan to leave for 6 months or more."; 
+                content = "Public charge " +txtDNA.bold()+ " to you unless you leave the U.S. for more than 6 months. Public charge does not affect applications for citizenship. Talk to an immigration attorney if you plan to leave for 6 months or more."; 
             } else /* quizRadio[2] == "gcbasedonutvisavawaorasylum" */ {
                 content = "Public charge does not apply to you unless you leave the U.S. for more than 6 months. Public charge does not apply for Green Card applications based on U/T visa, VAWA, or Asylum or to people who have Green Cards when they adjust status under this category. Talk to an immigration attorney if you plan to leave for 6 months or more.";
             }
