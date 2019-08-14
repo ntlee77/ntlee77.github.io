@@ -141,45 +141,45 @@ function getEndingSentence() {
             quizRadio.push(quizRadioRQ[i].id);
         }
     }
-   var txtDNA = "does not apply";
-    var txtMA = "may apply"; 
+   var txtDNA = " does not apply ";
+    var txtMA = " may apply "; 
     
     if (quizRadio[0] == "gc_yes") {
         if (quizRadio[1] == "famgcapp_yes") {
             if (quizRadio[2] == "faminterviewUS") content = "You and other family members (not the one you are sponsoring) can use any benefits without affecting the one you are sponsoring.";
             else /* quizRadio[2] == "faminterviewconsulate" */ content = "Public charge might be an issue. Get immigration advice.";    
-        } else /* quizRadio[1] == "famgcapp_no" */ content = "Again, public charge does not apply to you unless you leave the U.S. for more than 6 months.  Public charge does not affect applications for citizenship. Talk to an immigration attorney if you plan to leave for 6 months or more.";
+        } else /* quizRadio[1] == "famgcapp_no" */ content = "Again, public charge" +txtDNA.bold()+ "to you unless you leave the U.S. for more than 6 months.  Public charge does not affect applications for citizenship. Talk to an immigration attorney if you plan to leave for 6 months or more.";
     } else { //quizRadio[0] == "gc_no"
         if (quizRadio[1] == "famgcapp_no") {
             if (quizRadio[2] == "citizenship") {
-                content = "Public charge " +txtDNA.bold()+ " to you unless you leave the U.S. for more than 6 months. Public charge does not affect applications for citizenship. Talk to an immigration attorney if you plan to leave for 6 months or more."; 
+                content = "Public charge" +txtDNA.bold()+ "to you unless you leave the U.S. for more than 6 months. Public charge does not affect applications for citizenship. Talk to an immigration attorney if you plan to leave for 6 months or more."; 
             } else /* quizRadio[2] == "gcbasedonutvisavawaorasylum" */ {
-                content = "Public charge does not apply to you unless you leave the U.S. for more than 6 months. Public charge does not apply for Green Card applications based on U/T visa, VAWA, or Asylum or to people who have Green Cards when they adjust status under this category. Talk to an immigration attorney if you plan to leave for 6 months or more.";
+                content = "Public charge" +txtDNA.bold()+ "to you unless you leave the U.S. for more than 6 months. Public charge" +txtDNA.bold()+ "for Green Card applications based on U/T visa, VAWA, or Asylum or to people who have Green Cards when they adjust status under this category. Talk to an immigration attorney if you plan to leave for 6 months or more.";
             }
         } else if (quizRadio[1] == "famgcapp_yes") {
             if (quizRadio[3] == "citizenship") {
-                if (quizRadio[2] == "faminterviewUS") content = "Public charge doesn't apply to you since you are applying for citizenship. You may use any benefits for which you qualify. You and other family members (not the one you are sponsoring) can use any benefits without affecting the one you are sponsoring.";
-                else /* quizRadio[2] == "faminterviewconsulate" */ content = "Public charge doesn't apply to you since you are applying for citizenship. You may use any benefits for which you qualify. However, public charge might be an issue for immigration. Get immigration advice.";
+                if (quizRadio[2] == "faminterviewUS") content = "Public charge" +txtDNA.bold()+ "to you since you are applying for citizenship. You may use any benefits for which you qualify. You and other family members (not the one you are sponsoring) can use any benefits without affecting the one you are sponsoring.";
+                else /* quizRadio[2] == "faminterviewconsulate" */ content = "Public charge" +txtDNA.bold()+ "to you since you are applying for citizenship. You may use any benefits for which you qualify. However, public charge might be an issue for immigration. Get immigration advice.";
             } else { /* quizRadio[3] == "gcbasedonutvisavawaorasylum" */
-                if (quizRadio[2] == "faminterviewUS") content = "Public charge doesn’t apply for Green Card applications based on U/T visa, VAWA, or Asylum or to people who have Green Cards when they adjust status under this category. You may use any benefits for which you qualify. You and other family members (not the one you are sponsoring) can use any benefits without affecting the one you are sponsoring.";
-                else /* quizRadio[2] == "faminterviewconsulate" */ content = "Public charge doesn’t apply for Green Card applications based on U/T visa, VAWA, or Asylum or to people who have Green Cards when they adjust status under this category. You may use any benefits for which you qualify. However, public charge might be an issue for immigration. Get immigration advice.";
+                if (quizRadio[2] == "faminterviewUS") content = "Public charge" +txtDNA.bold()+ "for Green Card applications based on U/T visa, VAWA, or Asylum or to people who have Green Cards when they adjust status under this category. You may use any benefits for which you qualify. You and other family members (not the one you are sponsoring) can use any benefits without affecting the one you are sponsoring.";
+                else /* quizRadio[2] == "faminterviewconsulate" */ content = "Public charge" +txtDNA.bold()+ "for Green Card applications based on U/T visa, VAWA, or Asylum or to people who have Green Cards when they adjust status under this category. You may use any benefits for which you qualify. However, public charge might be an issue for immigration. Get immigration advice.";
                 }
         }
-        else if (quizRadio[1] == "dacarenewal") content = "Public charge doesn’t apply for DACA renewal applications. You may use any benefits for which you qualify.";
-        else if (quizRadio[1] == "uortvisa") content = "Public charge doesn’t apply for U or T Visa applications or to people who have U or T visas when they adjust status under this category. You may use any benefits for which you qualify.";
-        else if (quizRadio[1] == "asylumorrefugeestatus") content = "Public charge doesn’t apply for Asylum or Refugee applications or to people who have Asylum or Refugee status when they adjust status under this category. You may use any benefits for which you qualify.";
-        else if (quizRadio[1] == "tps") content = "Public charge doesn’t apply for TPS applications or to people who have TPS status when they adjust status under this category. You may use any benefits for which you qualify.";
-        else if (quizRadio[1] == "vawa") content = "Public charge doesn’t apply for VAWA applications or to people who have VAWA status when they adjust status under this category. You may use any benefits for which you qualify.";
-        else if (quizRadio[1] == "specialimmigrantjuvenilestatus") content = "Public charge doesn’t apply for Special Immigrant Juvenile Status applications or to people who have Special Immigrant Juvenile status when they adjust status under this category. You may use any benefits for which you qualify.";
-        else if (quizRadio[1] == "specialimmigrantvisastatus") content = "Public charge doesn’t apply for Special Immigrant Visa applications or to people who have a Special Immigrant visa when they adjust status under this category. You may use any benefits for which you qualify.";
-        else if (quizRadio[1] == "adjustmentundernarcara") content = "Public charge doesn’t apply for NACARA applications or to people who have NACARA status when they adjust status under this category. You may use any benefits for which you qualify.";
-        else if (quizRadio[1] == "adjustmentunderhaifa") content = "Public charge doesn’t apply for HAIFA applications or to people who have HAIFA status when they adjust status under this category. You may use any benefits for which you qualify.";
-        else if (quizRadio[1] == "adjustmentundercaa") content = "Public charge doesn’t apply for CAA applications or to people who have CAA status when they adjust status under this category. You may use any benefits for which you qualify.";
+        else if (quizRadio[1] == "dacarenewal") content = "Public charge" +txtDNA.bold()+ "for DACA renewal applications. You may use any benefits for which you qualify.";
+        else if (quizRadio[1] == "uortvisa") content = "Public charge" +txtDNA.bold()+ "for U or T Visa applications or to people who have U or T visas when they adjust status under this category. You may use any benefits for which you qualify.";
+        else if (quizRadio[1] == "asylumorrefugeestatus") content = "Public charge" +txtDNA.bold()+ "for Asylum or Refugee applications or to people who have Asylum or Refugee status when they adjust status under this category. You may use any benefits for which you qualify.";
+        else if (quizRadio[1] == "tps") content = "Public charge" +txtDNA.bold()+ "for TPS applications or to people who have TPS status when they adjust status under this category. You may use any benefits for which you qualify.";
+        else if (quizRadio[1] == "vawa") content = "Public charge" +txtDNA.bold()+ "for VAWA applications or to people who have VAWA status when they adjust status under this category. You may use any benefits for which you qualify.";
+        else if (quizRadio[1] == "specialimmigrantjuvenilestatus") content = "Public charge" +txtDNA.bold()+ "for Special Immigrant Juvenile Status applications or to people who have Special Immigrant Juvenile status when they adjust status under this category. You may use any benefits for which you qualify.";
+        else if (quizRadio[1] == "specialimmigrantvisastatus") content = "Public charge" +txtDNA.bold()+ "for Special Immigrant Visa applications or to people who have a Special Immigrant visa when they adjust status under this category. You may use any benefits for which you qualify.";
+        else if (quizRadio[1] == "adjustmentundernarcara") content = "Public charge" +txtDNA.bold()+ "for NACARA applications or to people who have NACARA status when they adjust status under this category. You may use any benefits for which you qualify.";
+        else if (quizRadio[1] == "adjustmentunderhaifa") content = "Public charge" +txtDNA.bold()+ "for HAIFA applications or to people who have HAIFA status when they adjust status under this category. You may use any benefits for which you qualify.";
+        else if (quizRadio[1] == "adjustmentundercaa") content = "Public charge" +txtDNA.bold()+ "for CAA applications or to people who have CAA status when they adjust status under this category. You may use any benefits for which you qualify.";
         else { //quizRadio[1] == "noneoftheabove"
             if (quizRadio[2] == "none_famgcapp_yes") {
-                if (quizRadio[3] == "none_whereapply_insideus") content = "A public charge test may apply, but only a few benefits that an applicant receives would count. It is still safe to get Medi-Cal and CalFresh/food stamp benefits. Eligible family members can use any benefits for which they qualify. Use of certain benefits is only one factor. In this situation, immigration will also consider your health, age, education, skills, employment, current income and sponsor’s income when deciding if you will be a public charge.";
+                if (quizRadio[3] == "none_whereapply_insideus") content = "A public charge test" +txtMA.bold()+ ", but only a few benefits that an applicant receives would count. It is still safe to get Medi-Cal and CalFresh/food stamp benefits. Eligible family members can use any benefits for which they qualify. Use of certain benefits is only one factor. In this situation, immigration will also consider your health, age, education, skills, employment, current income and sponsor’s income when deciding if you will be a public charge.";
                 else /* quizRadio[3] == "none_whereapply_outsideus" */ content = "A public charge test applies in this situation. Talk to a qualified attorney about this.";
-            } else /* quizRadio[2] == "none_famgcapp_no" */ content = "Public charge does not apply right now. If you think you might seek to adjust through a family member in the distant future, consult a qualified immigration attorney.";
+            } else /* quizRadio[2] == "none_famgcapp_no" */ content = "Public charge" +txtDNA.bold()+ "right now. If you think you might seek to adjust through a family member in the distant future, consult a qualified immigration attorney.";
         }
     }
     return content;
