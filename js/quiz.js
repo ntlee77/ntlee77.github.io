@@ -141,8 +141,8 @@ function getEndingSentence() {
             quizRadio.push(quizRadioRQ[i].id);
         }
     }
-    var txtDNA = "does not apply";
-    var txtMA = "may apply";
+   /* var txtDNA = "does not apply";
+      /*  var txtMA = "may apply";
     
     if (quizRadio[0] == "gc_yes") {
         if (quizRadio[1] == "famgcapp_yes") {
@@ -152,7 +152,7 @@ function getEndingSentence() {
     } else { //quizRadio[0] == "gc_no"
         if (quizRadio[1] == "famgcapp_no") {
             if (quizRadio[2] == "citizenship") {
-                content = "Public charge "+txtDNA.bold()+ " to you unless you leave the U.S. for more than 6 months. Public charge does not affect applications for citizenship. Talk to an immigration attorney if you plan to leave for 6 months or more."; 
+                content = "Public charge "  /* +txtDNA.bold()*/+ " to you unless you leave the U.S. for more than 6 months. Public charge does not affect applications for citizenship. Talk to an immigration attorney if you plan to leave for 6 months or more."; 
             } else /* quizRadio[2] == "gcbasedonutvisavawaorasylum" */ {
                 content = "Public charge does not apply to you unless you leave the U.S. for more than 6 months. Public charge does not apply for Green Card applications based on U/T visa, VAWA, or Asylum or to people who have Green Cards when they adjust status under this category. Talk to an immigration attorney if you plan to leave for 6 months or more.";
             }
@@ -165,7 +165,7 @@ function getEndingSentence() {
                 else /* quizRadio[2] == "faminterviewconsulate" */ content = "Public charge doesn’t apply for Green Card applications based on U/T visa, VAWA, or Asylum or to people who have Green Cards when they adjust status under this category. You may use any benefits for which you qualify. However, public charge might be an issue for immigration. Get immigration advice.";
                 }
         }
-        else if (quizRadio[1] == "dacarenewal") content = "Public charge <br>doesn’t apply for DACA renewal applications. You may use any benefits for which you qualify.";
+        else if (quizRadio[1] == "dacarenewal") content = "Public charge doesn’t apply for DACA renewal applications. You may use any benefits for which you qualify.";
         else if (quizRadio[1] == "uortvisa") content = "Public charge doesn’t apply for U or T Visa applications or to people who have U or T visas when they adjust status under this category. You may use any benefits for which you qualify.";
         else if (quizRadio[1] == "asylumorrefugeestatus") content = "Public charge doesn’t apply for Asylum or Refugee applications or to people who have Asylum or Refugee status when they adjust status under this category. You may use any benefits for which you qualify.";
         else if (quizRadio[1] == "tps") content = "Public charge doesn’t apply for TPS applications or to people who have TPS status when they adjust status under this category. You may use any benefits for which you qualify.";
