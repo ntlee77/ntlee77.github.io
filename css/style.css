@@ -130,7 +130,7 @@ html,body {
     background-image: -o-linear-gradient(top, #A90321, #6D0019);
     background-image: linear-gradient(to bottom, #A90321, #6D0019);
     cursor: pointer;
-filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#A90321, endColorstr=#6D0019);
+filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#A90321, Colorstr=#6D0019);
 }
 
 .button_header:hover{
