@@ -224,6 +224,7 @@ padding-right: 15px;
   display: inline-block;
   border-bottom: 1px dotted black;
     cursor: pointer;
+  text-indent: 0px;
 }
 
 .tooltip .tooltiptext {
@@ -364,4 +365,8 @@ a {
 
 #noneoftheabove {
     margin-bottom: 10vw;
+}
+
+.indent {
+  text-indent: 4vw;
 }

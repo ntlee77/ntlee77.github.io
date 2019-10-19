@@ -2,6 +2,7 @@
 
 var currentQuestion = 1;
 var question5to3 = false;
+var gcUSApp = 0; //0 = not applicable, 1 = false, 2 = true
 
 /* If the page is reloaded, makes sure the radio buttons are blank even if they had been selected before the reload. */
 window.onload = function(){
@@ -141,13 +142,18 @@ function getEndingSentence() {
             quizRadio.push(quizRadioRQ[i].id);
         }
     }
-   var txtDNA = " does not apply ";
+    var txtDNA = " does not apply ";
     var txtMA = " may apply "; 
     
     if (quizRadio[0] == "gc_yes") {
         if (quizRadio[1] == "famgcapp_yes") {
-            if (quizRadio[2] == "faminterviewUS") content = "You and other family members (not the one you are sponsoring) can use any benefits without affecting the one you are sponsoring.";
-            else /* quizRadio[2] == "faminterviewconsulate" */ content = "Public charge might be an issue. Get immigration advice.";    
+            if (quizRadio[2] == "faminterviewUS") {
+                content = "You and other family members (not the one you are sponsoring) can use any benefits without affecting the one you are sponsoring.";
+                gcUSApp = 2; //true
+            } else /* quizRadio[2] == "faminterviewconsulate" */ {
+                content = "Public charge might be an issue. Get immigration advice."; 
+                gcUSApp = 1; //false
+            }   
         } else /* quizRadio[1] == "famgcapp_no" */ content = "Again, public charge" +txtDNA.bold()+ "to you unless you leave the U.S. for more than 6 months.  Public charge does not affect applications for citizenship. Talk to an immigration attorney if you plan to leave for 6 months or more.";
     } else { //quizRadio[0] == "gc_no"
         if (quizRadio[1] == "famgcapp_no") {
@@ -161,9 +167,14 @@ function getEndingSentence() {
                 if (quizRadio[2] == "faminterviewUS") content = "Public charge" +txtDNA.bold()+ "to you since you are applying for citizenship. You may use any benefits for which you qualify. You and other family members (not the one you are sponsoring) can use any benefits without affecting the one you are sponsoring.";
                 else /* quizRadio[2] == "faminterviewconsulate" */ content = "Public charge" +txtDNA.bold()+ "to you since you are applying for citizenship. You may use any benefits for which you qualify. However, public charge might be an issue for immigration. Get immigration advice.";
             } else { /* quizRadio[3] == "gcbasedonutvisavawaorasylum" */
-                if (quizRadio[2] == "faminterviewUS") content = "Public charge" +txtDNA.bold()+ "for Green Card applications based on U/T visa, VAWA, or Asylum or to people who have Green Cards when they adjust status under this category. You may use any benefits for which you qualify. You and other family members (not the one you are sponsoring) can use any benefits without affecting the one you are sponsoring.";
-                else /* quizRadio[2] == "faminterviewconsulate" */ content = "Public charge" +txtDNA.bold()+ "for Green Card applications based on U/T visa, VAWA, or Asylum or to people who have Green Cards when they adjust status under this category. You may use any benefits for which you qualify. However, public charge might be an issue for immigration. Get immigration advice.";
+                if (quizRadio[2] == "faminterviewUS") {
+                    content = "Public charge" +txtDNA.bold()+ "for Green Card applications based on U/T visa, VAWA, or Asylum or to people who have Green Cards when they adjust status under this category. You may use any benefits for which you qualify. You and other family members (not the one you are sponsoring) can use any benefits without affecting the one you are sponsoring.";
+                    gcUSApp = 2;
+                } else /* quizRadio[2] == "faminterviewconsulate" */ {
+                    content = "Public charge" +txtDNA.bold()+ "for Green Card applications based on U/T visa, VAWA, or Asylum or to people who have Green Cards when they adjust status under this category. You may use any benefits for which you qualify. However, public charge might be an issue for immigration. Get immigration advice.";
+                    gcUSApp = 1;
                 }
+            }
         }
         else if (quizRadio[1] == "dacarenewal") content = "Public charge" +txtDNA.bold()+ "for DACA renewal applications. You may use any benefits for which you qualify.";
         else if (quizRadio[1] == "uortvisa") content = "Public charge" +txtDNA.bold()+ "for U or T Visa applications or to people who have U or T visas when they adjust status under this category. You may use any benefits for which you qualify.";
@@ -182,5 +193,26 @@ function getEndingSentence() {
             } else /* quizRadio[2] == "none_famgcapp_no" */ content = "Public charge" +txtDNA.bold()+ "right now. If you think you might seek to adjust through a family member in the distant future, consult a qualified immigration attorney.";
         }
     }
+
+    //changes text for people applying for green cards either inside or outside of the US, as according to the court rulings on 10-15-19:
+    if (gcUSApp == 2) { //true, the applicant is applying inside of the US
+        document.getElementById("moreInfoPublicCharge1").innerHTML = "If a public charge test applies, only a few benefits that an applicant receives would count. It is safe to get CalFresh/SNAP and any Medi-Cal/Medicaid benefits.";
+        document.getElementById("moreInfoPublicCharge2").innerHTML = "Only these benefits (used by the immigrant) are currently considered for public charge for immigrants seeking a green card:";
+        document.getElementById("moreInfoPublicCharge3").innerHTML = "Court have stopped changes that were supposed to start on October 15, 2019.";
+        document.getElementById("moreInfoPublicCharge3").style.padding = "2vw 0vw 0vw 0vw";
+        document.getElementById("moreInfoPublicCharge3").className = "";
+        document.getElementById("moreInfoPublicCharge3Alternate").className = "invisible";
+    } 
+    if (gcUSApp == 1) { //false, the applicant is applying but from outside of the US
+        document.getElementById("moreInfoPublicCharge1").innerHTML = "If a public charge test applies, many benefits currently count.  But, we expect changes soon.  After the changes, these are the benefits (used by the immigrant) that will count:";
+        document.getElementById("moreInfoPublicCharge2").className = "invisible";
+        document.getElementById("medicaid").className = "invisible";
+        document.getElementById("extraBenefits").className = "";
+        document.getElementById("moreInfoPublicCharge3").innerHTML = "*Most immigrants facing a public charge test only qualify for state Medi-Cal.";
+        document.getElementById("moreInfoPublicCharge3").style.padding = "2vw 0vw 0vw 0vw";
+        document.getElementById("moreInfoPublicCharge3").className = "";
+        document.getElementById("moreInfoPublicCharge3Alternate").className = "invisible";
+    }
+
     return content;
 }
